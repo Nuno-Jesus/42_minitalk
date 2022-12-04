@@ -21,11 +21,15 @@ void	send_letter(pid_t spid, unsigned char c)
 	while (i++ < 8)
 	{
 		if (c & 0b00000001)
+		{
 			if (kill(spid, SIGUSR1) == -1)
 				print_error("kill(): couldn't transmit bit to server\n");
+		}
 		else
+		{
 			if (kill(spid, SIGUSR2) == -1)
 				print_error("kill(): couldn't transmit bit to server\n");
+		}
 		c >>= 1;
 		usleep(100);
 	}

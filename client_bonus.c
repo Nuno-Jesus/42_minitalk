@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:48:49 by ncarvalh          #+#    #+#             */
-/*   Updated: 2022/12/03 23:59:49 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2022/12/04 00:34:02 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ void	send_letter(pid_t spid, unsigned char c)
 	while (i++ < 8)
 	{
 		if (c & 0b00000001)
-			kill(spid, SIGUSR1);
+		{
+			if (kill(spid, SIGUSR1) == -1)
+				print_error("kill(): couldn't transmit bit to server\n");
+		}
 		else
-			kill(spid, SIGUSR2);
+		{
+			if (kill(spid, SIGUSR2) == -1)
+				print_error("kill(): couldn't transmit bit to server\n");
+		}
 		c >>= 1;
 		usleep(100);
 	}
