@@ -31,7 +31,6 @@ void	handler(int signal)
 		{
 			ft_printf("%s\n", g_msg);
 			free(g_msg);
-			exit(EXIT_SUCCESS);
 		}
 		count = 0;
 		c = 0;
