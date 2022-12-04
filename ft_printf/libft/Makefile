@@ -1,8 +1,25 @@
+#! Colors
+RESET = \033[0m       # Text Reset
+BLACK = \033[1;30m       # Black
+RED = \033[1;31m         # Red
+GREEN = \033[1;32m       # Green
+YELLOW = \033[1;33m      # Yellow
+BLUE = \033[1;34m       # Blue
+PURPLE = \033[1;35m     # Purple
+CYAN = \033[1;36m        # Cyan
+WHITE = \033[1;37m       # White
+
+#! Commands
 CC = cc
-FLAGS = -Wall -Wextra -Werror
-DEPS = .
 RM = rm -f
 AR = ar -rc
+
+#! Folders
+DEPS = includes
+SRCS = .
+
+#! Flags
+CFLAGS = -Wall -Wextra -Werror
 
 TARGET = 	ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 			ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o \
@@ -17,26 +34,29 @@ BONUS_TARGET = 	ft_lstadd_back.o ft_lstadd_front.o ft_lstclear.o \
 NAME = libft.a
 
 %.o : %.c 
-	$(CC) $(FLAGS) -c $< -o $@ -I $(DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(DEPS)
 
 all: $(NAME)
 
 bonus: $(TARGET) $(BONUS_TARGET)
-	$(AR) $(NAME) $^
+	@echo "[${CYAN}Linking${RESET}] ${GREEN}libft${RESET}"
+	@$(AR) $(NAME) $^
 
 $(NAME): $(TARGET)
-	$(AR) $(NAME) $^
+	@echo "[${CYAN}Linking${RESET}] ${GREEN}libft${RESET}"
+	@$(AR) $(NAME) $^
 
 clean:
-	$(RM) $(TARGET) $(BONUS_TARGET)
+	@echo "[${CYAN}Cleaning${RESET}] ${GREEN}libft${RESET}"
+	@$(RM) $(TARGET) $(BONUS_TARGET)
 
 fclean: clean
-	$(RM) $(NAME) $(BONUS_TARGET)
+	@$(RM) $(NAME) $(BONUS_TARGET)
 
 re: fclean all
 
 rebonus: fclean bonus
 
 so:
-	$(CC) -nostartfiles -fPIC $(FLAGS) $(TARGET) $(BONUS_TARGET)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(TARGET) $(BONUS_TARGET)
 	cc -nostartfiles -shared -o libft.so $(TARGET) $(BONUS_TARGET)
