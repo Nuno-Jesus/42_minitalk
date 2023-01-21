@@ -3,7 +3,16 @@ This project was graded <strong>125/100</strong>.
 
 
 ## 📒 **About**
-> Compiling an running a single program is fine, but have you run 2 programs and made them communicate? Have you worked with signals?
+Compiling an running a single program is fine, but have you run 2 programs and made them communicate? Have you worked with signals? What about bits manipulation?
+
+## 🚨 **Disclaimer**
+At 42, the C projects are built following a bunch of rules that enforce good coding style. Some of them are:
+
+	- No for, do while, switch, case or goto are allowed
+	- No more than 25 lines per function and 5 functions per file
+	- No assigns and declarations in the same line (unless static)
+	- No more than 5 variables in 1 function
+	... 
 
 ## 🔧 **Implementation**
 
