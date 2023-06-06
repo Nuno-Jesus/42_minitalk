@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:48:49 by ncarvalh          #+#    #+#             */
-/*   Updated: 2022/12/04 00:34:02 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:47:18 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	send_letter(pid_t spid, unsigned char c)
 	int	i;
 
 	i = 0;
-	ft_printf("Sending 0x%X (%c)\n", c, c);
 	while (i++ < 8)
 	{
 		if (c & 0b00000001)

@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 23:48:38 by ncarvalh          #+#    #+#             */
-/*   Updated: 2022/12/04 01:46:06 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:46:56 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	handler(int signal, siginfo_t *info, void *ucontent)
 		{
 			ft_printf("%s\n", g_msg);
 			free(g_msg);
+			g_msg = NULL;
 			if (kill(info->si_pid, SIGUSR1) == -1)
 				print_error("kill(): could't send ACK back to client\n");
 		}

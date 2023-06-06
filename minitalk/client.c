@@ -17,7 +17,6 @@ void	send_letter(pid_t spid, unsigned char c)
 	int	i;
 
 	i = 0;
-	ft_printf("Sending 0x%X (%c)\n", c, c);
 	while (i++ < 8)
 	{
 		if (c & 0b00000001)
